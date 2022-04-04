@@ -19,6 +19,7 @@ ReactDOM.render(
       clientId={auth0.clientId}
       redirectUri={window.location.origin}
       scope="openid profile email"
+      audience="http://rails-api"
     >
       <App />
     </Auth0Provider>
