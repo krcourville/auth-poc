@@ -5,13 +5,20 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 import App from "./App";
 
+const env = import.meta.env;
+
+const auth0 = {
+  domain: env.VITE_AUTH0_DOMAIN,
+  clientId: env.VITE_AUTH0_CLIENT_ID,
+};
+
 ReactDOM.render(
   <React.StrictMode>
     <Auth0Provider
-      domain="dev-8apuqwqs.us.auth0.com"
-      clientId="1W0y5jUQbXEDBdhQWlIZJov71vSbh4Ja"
+      domain={auth0.domain}
+      clientId={auth0.clientId}
       redirectUri={window.location.origin}
-      scope="openid profile email phone"
+      scope="openid profile email"
     >
       <App />
     </Auth0Provider>

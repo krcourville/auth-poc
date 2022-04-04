@@ -5,10 +5,10 @@ const Profile = () => {
   const { user } = useAuth0();
 
   return (
-    <RequireLogin>
+    <div>
       <label htmlFor="">Profile Data</label>
       <pre>{JSON.stringify(user, null, 2)}</pre>
-    </RequireLogin>
+    </div>
   );
 };
 
