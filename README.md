@@ -17,12 +17,11 @@ rvm use
 cd api
 bundle install
 
-# add secret config
-# specify your preferred editor..
-EDITOR="nano" bin/rails credentials:edit
-# add auth0_domain
-# auth0_domain: {YOUR_AUTH0_DOMAIN}
-# Reference: https://guides.rubyonrails.org/security.html#custom-credentials
+# add credentials config
+# Refer to /rails-api/api/config/credentials.example.yml
+# References:
+# - https://guides.rubyonrails.org/security.html#custom-credentials
+# - https://auth0.com/docs/quickstart/backend/rails
 
 bundle exec rails s -p 3030
 
