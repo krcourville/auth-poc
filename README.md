@@ -1,30 +1,34 @@
 ## Getting Started
 
-```bash
-# Run each in a new terminal
+### rails-api
 
-# start js-client
+> Tested with ruby 3.1
+
+1. Add credentials config
+   - Refer to `/rails-api/api/config/credentials.example.yml`
+   - See also:
+     - https://guides.rubyonrails.org/security.html#custom-credentials
+     - https://auth0.com/docs/quickstart/backend/rails
+2. Install packages
+   ```sh
+   cd rails-api
+   rvm use
+   cd api
+   bundle install
+   ```
+3. Start the api
+   ```
+   bundle exec rails s -p 3030
+   ```
+
+### js-client
+
+> Tested with nodejs v17.8.0
+
+```sh
 cd js-client
 npm install
 npm run dev
-
-# create `js-client/src/.env based on
-# `js-client/src/.env-example
-
-# start rails-api
-cd rails-api
-rvm use
-cd api
-bundle install
-
-# add credentials config
-# Refer to /rails-api/api/config/credentials.example.yml
-# References:
-# - https://guides.rubyonrails.org/security.html#custom-credentials
-# - https://auth0.com/docs/quickstart/backend/rails
-
-bundle exec rails s -p 3030
-
 ```
 
 ## References
