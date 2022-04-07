@@ -22,8 +22,9 @@ bundle install
 EDITOR="nano" bin/rails credentials:edit
 # add auth0_domain
 # auth0_domain: {YOUR_AUTH0_DOMAIN}
+# Reference: https://guides.rubyonrails.org/security.html#custom-credentials
 
-rails s -p 3030
+bundle exec rails s -p 3030
 
 ```
 

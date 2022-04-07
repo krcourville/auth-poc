@@ -9,6 +9,9 @@ export interface ApiClientResponse {
   error?: string;
 }
 
+/**
+ * HTTP Client for rails-api
+ */
 export default class RailsApiClient {
   constructor(private config: RailsApiClientConfig) {
     this.config = config ?? {};
