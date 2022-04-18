@@ -1,6 +1,15 @@
-## Getting Started
+## Expected Auth0 Configuration
 
-### Using Docker Compose
+Sign up for a free Auth0 Account (no credit card required)
+
+1. Add an Application for `js-client` with params of:
+   - Application Type = `Single Page Application`
+   - Allowed Callback URLs, Allowed Logout URLs, Allowed Web Origins = `http://localhost:3000`
+2. Add an API for `rails-api` with params of:
+   - Name: rails-api
+   - Idenitier: `http://rails-api`
+
+## Getting Started via Docker
 
 ```sh
 docker-compose up
@@ -10,7 +19,11 @@ docker-compose up --build
 
 ```
 
-js-client will be accessible via http://localhost:3000/
+### Urls
+
+- [js-client](http://localhost:3000/)
+
+## Getting Started without Docker
 
 ### rails-api
 
