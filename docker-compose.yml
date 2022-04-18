@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  js-client:
+    build:
+      context: ./js-client
+    # command: ME=$$(whoami) && echo ME=$$ME && npx vite
+    volumes:
+      - ./js-client:/app
+      - exclude:/app/node_modules/
+    ports:
+      - "3000:3000"
+    # tty: true
+volumes:
+  exclude:

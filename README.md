@@ -1,5 +1,17 @@
 ## Getting Started
 
+### Using Docker Compose
+
+```sh
+docker-compose up
+
+# or, if a docker image needs rebuilding...
+docker-compose up --build
+
+```
+
+js-client will be accessible via http://localhost:3000/
+
 ### rails-api
 
 > Tested with ruby 3.1
@@ -35,3 +47,4 @@ npm run dev
 
 - [Requested scopes versus granted scopes](https://auth0.com/docs/get-started/apis/scopes#requested-scopes-versus-granted-scopes)
 - [OIDC Standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims)
+- [Working with docker bind mounts and node_modules](https://burnedikt.com/dockerized-node-development-and-mounting-node-volumes/)
