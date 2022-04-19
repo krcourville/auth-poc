@@ -22,6 +22,7 @@ docker-compose up --build
 ### Urls
 
 - [js-client](http://localhost:3000/)
+- [rails-api](http://localhost:3030/)
 
 ## Getting Started without Docker
 

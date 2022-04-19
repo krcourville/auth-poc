@@ -5,7 +5,7 @@ WORKDIR /app
 COPY package.json ./
 
 # WORKAROUND:
-# npm and vite does not currently play will in Docker environment
+# npm and vite do not currently play well in Docker environment
 # https://github.com/vitejs/vite/issues/6767
 RUN yarn install
 
