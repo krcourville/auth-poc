@@ -7,20 +7,17 @@ import App from "./App";
 
 const env = import.meta.env;
 
-const auth0 = {
+const auth0config = {
   domain: env.VITE_AUTH0_DOMAIN,
   clientId: env.VITE_AUTH0_CLIENT_ID,
+  redirectUri: window.location.origin,
+  scope: ["openid", "profile", "email", "access:private_scoped"].join(" "),
+  audience: "http://rails-api",
 };
 
 ReactDOM.render(
   <React.StrictMode>
-    <Auth0Provider
-      domain={auth0.domain}
-      clientId={auth0.clientId}
-      redirectUri={window.location.origin}
-      scope="openid profile email"
-      audience="http://rails-api"
-    >
+    <Auth0Provider {...auth0config}>
       <App />
     </Auth0Provider>
   </React.StrictMode>,

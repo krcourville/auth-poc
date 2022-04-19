@@ -8,6 +8,11 @@ Sign up for a free Auth0 Account (no credit card required)
 2. Add an API for `rails-api` with params of:
    - Name: rails-api
    - Idenitier: `http://rails-api`
+   - RBAC Settings: `Enable RBAC` is enabled and `Add Permissions in the Access Token` is enabled
+   - In rails-api `Permissions` tab, add a Permission of `read:private-scoped`
+3. In User Managment | Roles
+   - Add a role of `rails-api-reader`; grant it access to `rails-api` | `read-private-scoped`
+   - Add a user to role `rails-api-reader`
 
 ## Getting Started via Docker
 
@@ -59,6 +64,8 @@ npm run dev
 
 ## References
 
+- [auth0 docs](https://auth0.com/docs)
+- [Ruby On Rails API: Authorization](https://auth0.com/docs/quickstart/backend/rails)
 - [Requested scopes versus granted scopes](https://auth0.com/docs/get-started/apis/scopes#requested-scopes-versus-granted-scopes)
 - [OIDC Standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims)
 - [Working with docker bind mounts and node_modules](https://burnedikt.com/dockerized-node-development-and-mounting-node-volumes/)

@@ -4,7 +4,7 @@ module Secured
 
     SCOPES = {
       '/api/private'    => nil,
-      '/api/private-scoped' => ['read:messages']
+      '/api/private-scoped' => ['access:private_scoped']
     }
 
     included do
@@ -19,6 +19,9 @@ module Secured
 
     def authenticate_request!
       @auth_payload, @auth_header = auth_token
+
+      print("@auth_payload=#{@auth_payload}\n\n")
+      print("@auth_header=#{@auth_header}\n\n")
 
       render json: { errors: ['Insufficient scope'] }, status: :forbidden unless scope_included
     rescue JWT::VerificationError, JWT::DecodeError
@@ -38,10 +41,17 @@ module Secured
     def scope_included
       # The intersection of the scopes included in the given JWT and the ones in the SCOPES hash needed to access
       # the PATH_INFO, should contain at least one element
-      if SCOPES[request.env['PATH_INFO']] == nil
+      path_scope = SCOPES[request.env['PATH_INFO']]
+      if path_scope == nil
         true
       else
-        (String(@auth_payload['scope']).split(' ') & (SCOPES[request.env['PATH_INFO']])).any?
+        user_scope = String(@auth_payload['scope']).split(' ')
+        intersect = user_scope & path_scope
+        print("user_scope=#{user_scope}\n\n")
+        print("path_scope=#{path_scope}\n\n")
+        print("intersect=#{intersect}\n\n")
+
+        intersect.any?
       end
     end
   end
