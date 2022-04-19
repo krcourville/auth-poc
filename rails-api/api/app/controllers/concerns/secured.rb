@@ -12,7 +12,7 @@ module Secured
     end
 
     def initialize
-      self.jwt = JsonWebToken.new
+      @jwt = JsonWebToken.new
     end
 
     private
@@ -32,7 +32,7 @@ module Secured
     end
 
     def auth_token
-      jwt.verify(http_token)
+      @jwt.verify(http_token)
     end
 
     def scope_included
