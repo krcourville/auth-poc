@@ -62,10 +62,27 @@ npm install
 npm run dev
 ```
 
+## Tasks
+
+### rails-api: adding a secured route
+
+1. Define a controller and action
+2. Map route in `routes.rb`
+3. Map security in `secured.rb`
+
+PRODUCTION CONCERNS
+
+- MAINTENANCE: Would it be better to define security mappings elsewhere or use decorators on the action?
+- SECURITY: To avoid accidental exposure, make `anonymous` access an explicit opt-in configuration. Otherwise, route is dissallowed
+
 ## References
 
 - [auth0 docs](https://auth0.com/docs)
+- [Access tokens with multiple audiences](https://community.auth0.com/t/access-tokens-with-multiple-audiences/9911)
+- [Configure Logical API for Multiple APIs](https://auth0.com/docs/get-started/apis/set-logical-api)
 - [Ruby On Rails API: Authorization](https://auth0.com/docs/quickstart/backend/rails)
 - [Requested scopes versus granted scopes](https://auth0.com/docs/get-started/apis/scopes#requested-scopes-versus-granted-scopes)
 - [OIDC Standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims)
+- [Which OAuth 2.0 Flow Should I Use?](https://auth0.com/docs/get-started/authentication-and-authorization-flow/which-oauth-2-0-flow-should-i-use)
+- [Authorization Code Flow with Proof Key for Code Exchange (PKCE)](https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-proof-key-for-code-exchange-pkce): OAuth 2.0 Flow for web and mobile clients (addresses concerns for clients that cannot securely store Client Secret)
 - [Working with docker bind mounts and node_modules](https://burnedikt.com/dockerized-node-development-and-mounting-node-volumes/)

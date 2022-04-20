@@ -30,6 +30,10 @@ export default class RailsApiClient {
     return this.get("/private-scoped");
   }
 
+  getPrivatePermissionBased(): Promise<ApiClientResponse> {
+    return this.get("/private-permissionbased");
+  }
+
   private async get(path: string): Promise<ApiClientResponse> {
     const url = `${this.config.baseUrl}${path}`;
     const jwt = await this.config.jwtProvider();

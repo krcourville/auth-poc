@@ -7,6 +7,10 @@ module Secured
       '/api/private-scoped' => ['access:private_scoped']
     }
 
+    PERMISSIONS = {
+      '/api/private-permissionbased' => ['api/private-permissionbased']
+    }
+
     included do
       before_action :authenticate_request!
     end
@@ -23,7 +27,7 @@ module Secured
       print("@auth_payload=#{@auth_payload}\n\n")
       print("@auth_header=#{@auth_header}\n\n")
 
-      render json: { errors: ['Insufficient scope'] }, status: :forbidden unless scope_included
+      render json: { errors: ['Insufficient scope'] }, status: :forbidden unless scope_included and perm_included
     rescue JWT::VerificationError, JWT::DecodeError
       render json: { errors: ['Not Authenticated'] }, status: :unauthorized
     end
@@ -36,6 +40,21 @@ module Secured
 
     def auth_token
       @jwt.verify(http_token)
+    end
+
+    def perm_included
+      path_perms = PERMISSIONS[request.env['PATH_INFO']]
+      if path_perms == nil or path_perms.length() == 0
+        true
+      else
+        user_perms = @auth_payload['permissions'] or []
+        intersect = user_perms & path_perms
+        print("user_perms=#{user_perms}\n\n")
+        print("path_perms=#{path_perms}\n\n")
+        print("intersect=#{intersect}\n\n")
+
+        intersect.length == path_perms.length
+      end
     end
 
     def scope_included

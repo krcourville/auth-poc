@@ -54,15 +54,18 @@ async function authenticate(
     },
   });
 
-  const [publicRes, privateRes, privateScoped] = await Promise.all([
-    railsApi.getPublic(),
-    railsApi.getPrivate(),
-    railsApi.getPrivateScoped(),
-  ]);
+  const [publicRes, privateRes, privateScoped, privatePermissionBased] =
+    await Promise.all([
+      railsApi.getPublic(),
+      railsApi.getPrivate(),
+      railsApi.getPrivateScoped(),
+      railsApi.getPrivatePermissionBased(),
+    ]);
   const apiResponses = {
     publicRes,
     privateRes,
     privateScoped,
+    privatePermissionBased,
   };
   return {
     ...data,
