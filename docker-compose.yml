@@ -22,5 +22,16 @@ services:
     ports:
       - "3030:3030"
 
+  java-client:
+    build:
+      context: ./java-client
+    volumes:
+      - ./java-client:/app
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev gradle clean bootRun
+    command: "gradle bootRun"
+    ports:
+      - "8080:8080"
+
 volumes:
   exclude:

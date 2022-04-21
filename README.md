@@ -96,15 +96,15 @@ docker-compose up --build
 2. Map route in `routes.rb`
 3. Map security in `secured.rb`
 
+> WARNING: PRODUCTION CONCERNS
+
+- MAINTENANCE: Would it be better to define security mappings elsewhere or use decorators on the action?
+- SECURITY: To avoid accidental exposure, make `anonymous` access an explicit opt-in configuration. Otherwise, route is dissallowed
+
 ### java-client: adding a secured page
 
 1. Define a controller and template
 2. Map security in `SecurityConfig.java` (all pages require authentication by default)
-
-PRODUCTION CONCERNS
-
-- MAINTENANCE: Would it be better to define security mappings elsewhere or use decorators on the action?
-- SECURITY: To avoid accidental exposure, make `anonymous` access an explicit opt-in configuration. Otherwise, route is dissallowed
 
 ## References
 
