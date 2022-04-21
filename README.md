@@ -1,3 +1,13 @@
+## Demonstrates
+
+1. JS client authentication flow
+2. Traditional/SSR web client authentication flow
+3. Api security based on
+   - anonymous access
+   - authentication only
+   - required scope
+   - required permission
+
 ## Expected Auth0 Configuration
 
 Sign up for a free Auth0 Account (no credit card required)
@@ -28,6 +38,7 @@ docker-compose up --build
 
 - [js-client](http://localhost:3000/)
 - [rails-api](http://localhost:3030/)
+- [java-client](http://localhost:8080)
 
 ## Getting Started without Docker
 
@@ -56,11 +67,26 @@ docker-compose up --build
 
 > Tested with nodejs v17.8.0
 
-```sh
-cd js-client
-npm install
-npm run dev
-```
+1. Add Auth0 environment variables
+   - create `js-client/.env` based on `js-client/.env.example`
+2. Start the app
+   ```sh
+   cd js-client
+   npm install
+   npm run dev
+   ```
+
+### java-client
+
+> Tested with: java 11.0.14.1; Gradle 7.4.2
+
+1. Create `java-client/src/main/resources/application.yaml` based upon `java-client/src/main/resources/application.example.yaml`
+2. Start the app
+   ```sh
+   cd java-client
+   export SPRING_PROFILES_ACTIVE=dev gradle clean bootRun
+   gradle bootRun
+   ```
 
 ## Tasks
 
@@ -69,6 +95,11 @@ npm run dev
 1. Define a controller and action
 2. Map route in `routes.rb`
 3. Map security in `secured.rb`
+
+### java-client: adding a secured page
+
+1. Define a controller and template
+2. Map security in `SecurityConfig.java` (all pages require authentication by default)
 
 PRODUCTION CONCERNS
 
