@@ -50,18 +50,22 @@ async function authenticate(
   const railsApi = new RailsApiClient({
     jwtProvider: async () => {
       const jwt = await auth0.getAccessTokenSilently();
-      console.log("JWT", jwt);
       return jwt;
     },
   });
 
-  const [publicRes, privateRes] = await Promise.all([
-    railsApi.getPublic(),
-    railsApi.getPrivate(),
-  ]);
+  const [publicRes, privateRes, privateScoped, privatePermissionBased] =
+    await Promise.all([
+      railsApi.getPublic(),
+      railsApi.getPrivate(),
+      railsApi.getPrivateScoped(),
+      railsApi.getPrivatePermissionBased(),
+    ]);
   const apiResponses = {
     publicRes,
     privateRes,
+    privateScoped,
+    privatePermissionBased,
   };
   return {
     ...data,

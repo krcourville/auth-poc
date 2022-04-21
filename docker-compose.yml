@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  js-client:
+    build:
+      context: ./js-client
+    volumes:
+      - ./js-client:/app
+      - exclude:/app/node_modules/
+    ports:
+      - "3000:3000"
+    depends_on:
+      - rails-api
+
+  rails-api:
+    build:
+      context: ./rails-api
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3030 -b '0.0.0.0'"
+    # command: bundle exec rails s -p 3030 -b '0.0.0.0'"
+    volumes:
+      - ./rails-api/api:/app
+    ports:
+      - "3030:3030"
+
+volumes:
+  exclude:
