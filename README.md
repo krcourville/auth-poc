@@ -2,7 +2,9 @@
 
 1. JS client authentication flow
 2. Traditional/SSR web client authentication flow
-3. Api security based on
+3. Rails api/backend
+4. Java Spring client
+5. Api security based on
    - anonymous access
    - authentication only
    - required scope
