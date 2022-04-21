@@ -108,9 +108,26 @@ docker-compose up --build
 1. Define a controller and template
 2. Map security in `SecurityConfig.java` (all pages require authentication by default)
 
+### js-client: adding secured route/ux
+
+This scenario is currently not demo'd. However, some thoughts to consider:
+
+- The auth0 client provides a nice store for state based on authentication status
+- All api interactions should be handling errors and displaying
+  appropriate messaging to help with troubleshooting without over-exposing the application or api: "Oops! You are missing the following permission: read:stuff"
+- How to handle display of features based on permissions? Expose an api endpoint and query at startup?
+- User Impersonation: this is a tricky topic. It seems Auth0 used to support direct user impersonation but then removed this feature
+  since it was prone to being abused. Basically, doing so could result in a support staff writing (whether purposely or not) under the identity
+  of the impersonated user. Depending on the scenario, it may be
+  more ideal allow support personnel temporary and/or restricted access to user data. And any change audits made should be reflect the support person vs the end user.
+  More info: https://community.auth0.com/t/auth0-user-impersonation/81821/2
+  > This is a complex question. Our recommendation is a “companion app” or a side-by-side app. This is a separate app or a mode in the existing app that lets your admin view the user info.
+  > Impersonation is a security risk. When user info is viewed or modified, any log messages should clearly indicate WHO viewed or modified the info. If it is the user, that is straightforward. But if it is the admin, or a support person, that ALSO must be indicated. With plain impersonation, you don’t get the distinction that lets you know that someone else modified the data.
+
 ## References
 
 - [auth0 docs](https://auth0.com/docs)
+- [Set Up Multiple Environment](https://auth0.com/docs/get-started/auth0-overview/create-tenants/set-up-multiple-environments)
 - [Access tokens with multiple audiences](https://community.auth0.com/t/access-tokens-with-multiple-audiences/9911)
 - [Configure Logical API for Multiple APIs](https://auth0.com/docs/get-started/apis/set-logical-api)
 - [Ruby On Rails API: Authorization](https://auth0.com/docs/quickstart/backend/rails)
