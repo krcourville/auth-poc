@@ -16,18 +16,18 @@ An exploration of [Auth0](https://auth0.com/) features and what it looks like to
 
 ## Expected Auth0 Configuration
 
-Sign up for a free Auth0 Account (no credit card required)
-
-1. Add an Application for `js-client` with params of:
+1. Sign up for a free Auth0 Account (no credit card required)
+2. Add an Application for `js-client` with params of:
    - Application Type = `Single Page Application`
    - Allowed Callback URLs, Allowed Logout URLs, Allowed Web Origins = `http://localhost:3000`
-2. Add an API for `rails-api` with params of:
+3. Add an API for `rails-api` with params of:
    - Name: rails-api
    - Idenitier: `http://rails-api`
    - RBAC Settings: `Enable RBAC` is enabled and `Add Permissions in the Access Token` is enabled
    - In rails-api `Permissions` tab, add to Permissions (Scope):
-     - `access:private_scoped` -`api/private-permissionbased`
-3. In User Managment | Roles
+     - `access:private_scoped`
+     - `api/private-permissionbased`
+4. In User Managment | Roles
    - Add a role of `rails-api-user`; grant it access to `rails-api` | `api/private-permissionbased`
    - Add a user to role `rails-api-user`
 
