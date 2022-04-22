@@ -6,7 +6,7 @@
 4. Java Spring client
 5. Api security based on
    - anonymous access
-   - authentication only
+   - authenticated only
    - required scope
    - required permission
 
