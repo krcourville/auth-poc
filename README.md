@@ -1,3 +1,7 @@
+# Auth0 Proof of Concept
+
+An exploration of [Auth0](https://auth0.com/) features and what it looks like to be an [Auth0](https://auth0.com/) consumer.
+
 ## Demonstrates
 
 1. JS client authentication flow
