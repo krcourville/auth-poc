@@ -27,7 +27,19 @@ Sign up for a free Auth0 Account (no credit card required)
    - Add a role of `rails-api-user`; grant it access to `rails-api` | `api/private-permissionbased`
    - Add a user to role `rails-api-user`
 
-## Getting Started via Docker
+## Required Auth0 Consumer Configuration
+
+- `rails-api`:
+  - Refer to `/rails-api/api/config/credentials.example.yml`
+  - See also:
+    - https://guides.rubyonrails.org/security.html#custom-credentials
+    - https://auth0.com/docs/quickstart/backend/rails
+- `js-client`: create `js-client/.env` based on `js-client/.env.example`
+- `java-client`: Create `java-client/src/main/resources/application.yaml` based on `java-client/src/main/resources/application.example.yaml`
+
+## Getting Started: Docker
+
+> WARNING: Docker configuration is not production-ready. Use for dev purposes only!
 
 ```sh
 docker-compose up
@@ -43,25 +55,20 @@ docker-compose up --build
 - [rails-api](http://localhost:3030/)
 - [java-client](http://localhost:8080)
 
-## Getting Started without Docker
+## Getting Started: No Docker
 
 ### rails-api
 
 > Tested with ruby 3.1
 
-1. Add credentials config
-   - Refer to `/rails-api/api/config/credentials.example.yml`
-   - See also:
-     - https://guides.rubyonrails.org/security.html#custom-credentials
-     - https://auth0.com/docs/quickstart/backend/rails
-2. Install packages
+1. Install packages
    ```sh
    cd rails-api
    rvm use
    cd api
    bundle install
    ```
-3. Start the api
+2. Start the api
    ```
    bundle exec rails s -p 3030
    ```
@@ -70,26 +77,25 @@ docker-compose up --build
 
 > Tested with nodejs v17.8.0
 
-1. Add Auth0 environment variables
-   - create `js-client/.env` based on `js-client/.env.example`
-2. Start the app
-   ```sh
-   cd js-client
-   npm install
-   npm run dev
-   ```
+Start the app
+
+```sh
+cd js-client
+npm install
+npm run dev
+```
 
 ### java-client
 
 > Tested with: java 11.0.14.1; Gradle 7.4.2
 
-1. Create `java-client/src/main/resources/application.yaml` based upon `java-client/src/main/resources/application.example.yaml`
-2. Start the app
-   ```sh
-   cd java-client
-   export SPRING_PROFILES_ACTIVE=dev gradle clean bootRun
-   gradle bootRun
-   ```
+Start the app
+
+```sh
+cd java-client
+export SPRING_PROFILES_ACTIVE=dev gradle clean bootRun
+gradle bootRun
+```
 
 ## Tasks
 
@@ -102,7 +108,7 @@ docker-compose up --build
 > WARNING: PRODUCTION CONCERNS
 
 - MAINTENANCE: Would it be better to define security mappings elsewhere or use decorators on the action?
-- SECURITY: To avoid accidental exposure, make `anonymous` access an explicit opt-in configuration. Otherwise, route is dissallowed
+- SECURITY: To avoid accidental exposure, make `anonymous` access an explicit opt-in configuration. Otherwise, route is dissallowed. This is how `java-client` works.
 
 ### java-client: adding a secured page
 
