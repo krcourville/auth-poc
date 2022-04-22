@@ -147,3 +147,4 @@ This scenario is currently not demo'd. However, some thoughts to consider:
 - [Which OAuth 2.0 Flow Should I Use?](https://auth0.com/docs/get-started/authentication-and-authorization-flow/which-oauth-2-0-flow-should-i-use)
 - [Authorization Code Flow with Proof Key for Code Exchange (PKCE)](https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-proof-key-for-code-exchange-pkce): OAuth 2.0 Flow for web and mobile clients (addresses concerns for clients that cannot securely store Client Secret)
 - [Working with docker bind mounts and node_modules](https://burnedikt.com/dockerized-node-development-and-mounting-node-volumes/)
+- [The complete guide to protecting your APIs with OAuth2 (part 1)](https://stackoverflow.blog/2022/04/11/the-complete-guide-to-protecting-your-apis-with-oauth2/)
