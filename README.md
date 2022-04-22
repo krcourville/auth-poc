@@ -21,10 +21,11 @@ Sign up for a free Auth0 Account (no credit card required)
    - Name: rails-api
    - Idenitier: `http://rails-api`
    - RBAC Settings: `Enable RBAC` is enabled and `Add Permissions in the Access Token` is enabled
-   - In rails-api `Permissions` tab, add a Permission of `read:private-scoped`
+   - In rails-api `Permissions` tab, add to Permissions (Scope):
+     - `access:private_scoped` -`api/private-permissionbased`
 3. In User Managment | Roles
-   - Add a role of `rails-api-reader`; grant it access to `rails-api` | `read-private-scoped`
-   - Add a user to role `rails-api-reader`
+   - Add a role of `rails-api-user`; grant it access to `rails-api` | `api/private-permissionbased`
+   - Add a user to role `rails-api-user`
 
 ## Getting Started via Docker
 
