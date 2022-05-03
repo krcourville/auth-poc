@@ -13,9 +13,12 @@ export interface ApiClientResponse {
  * HTTP Client for rails-api
  */
 export default class RailsApiClient {
+  private jwtPromise: Promise<string>;
+
   constructor(private config: RailsApiClientConfig) {
     this.config = config ?? {};
     this.config.baseUrl = this.config.baseUrl ?? "http://localhost:3030/api";
+    this.jwtPromise = this.config.jwtProvider();
   }
 
   getPublic(): Promise<ApiClientResponse> {
@@ -36,7 +39,7 @@ export default class RailsApiClient {
 
   private async get(path: string): Promise<ApiClientResponse> {
     const url = `${this.config.baseUrl}${path}`;
-    const jwt = await this.config.jwtProvider();
+    const jwt = await this.jwtPromise;
     try {
       const res = await fetch(url, {
         headers: {
